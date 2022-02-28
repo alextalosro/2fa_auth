@@ -20,12 +20,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            custom_authenticator: App\Security\LoginFormAuthenticator
+            custom_authenticator: App\Security\LoginFormAuthenticator #use owr custom authenticator instead of build in
             logout: true #listener to any request to /logout
 
             remember_me:
                 secret: '%kernel.secret'
-                #always_remember_me: true
+                always_remember_me: true
                 signature_properties: [password]
 
             # activate different ways to authenticate
