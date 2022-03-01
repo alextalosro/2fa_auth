@@ -9,4 +9,7 @@ scheb_two_factor:
         sender_email: no-reply@example.com
         sender_name: Demo 2 FA  # Optional
         digits: 6    # Number of digits in authentication code
+        template: 'security/2fa_form.html.twig'
+
+
 
