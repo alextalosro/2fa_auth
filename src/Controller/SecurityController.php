@@ -29,15 +29,15 @@ class SecurityController extends AbstractController
 	
 	#[Route('/authenticate/2fa/enable', name: 'app_2fa_enable')]
 	#[IsGranted('ROLE_USER')]
-	public function enable2fa(
-		
-		EntityManagerInterface $entityManager)
+	public function enable2fa(EntityManagerInterface $entityManager)
 	{
 		$user = $this->getUser();
 		if(!$user ->isEmailAuthEnabled()){
-			$user->setTotpSecret($totpAuthenticator->generateSecret());
+			$user->setUseTwoFa(true);
 			
 			$entityManager->flush();
 		}
+		
+		return $this->render('welcome/index.html.twig');
 	}
 }
