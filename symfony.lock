@@ -156,6 +156,9 @@
     "spomky-labs/otphp": {
         "version": "v10.0.2"
     },
+    "symfony/asset": {
+        "version": "v6.0.3"
+    },
     "symfony/cache": {
         "version": "v6.0.3"
     },

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\DateType;
 use Doctrine\ORM\Mapping as ORM;
 use Scheb\TwoFactorBundle\Model\Email\TwoFactorInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -34,6 +35,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 	
 	#[ORM\Column(type: 'string', nullable: true)]
 	private string $authCode;
+	
+	#[ORM\Column(type: 'datetime', nullable: true)]
+    private $otpValidUntil;
 	
 
     public function getId(): ?int
@@ -153,5 +157,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 	public function setEmailAuthCode(string $authCode): void
 	{
 		$this->authCode = $authCode;
+		
+		$otpValidUnitilTime = new \DateTimeImmutable('now + 120 seconds');
+
+		
+		$this->otpValidUntil = $otpValidUnitilTime;
 	}
+	
+	public function getOtpValidUntil()
+	{
+		return $this->otpValidUntil;
+	}
+
+	public function setOtpValidUntil($otpValidUntil): void
+	{
+		$this->otpValidUntil = $otpValidUntil;
+	}
+	
 }
