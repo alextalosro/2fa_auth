@@ -39,7 +39,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 	#[ORM\Column(type: 'datetime', nullable: true)]
     private $otpValidUntil;
 	
-
+	#[ORM\Column(type: 'boolean', nullable: true)]
+	private $useTwoFa;
+	
     public function getId(): ?int
     {
         return $this->id;
@@ -137,7 +139,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 	
 	public function isEmailAuthEnabled(): bool
 	{
-		return true;
+		if ($this->getUseTwoFa() === null){
+			return false;
+		}
+		return $this->getUseTwoFa();
 	}
 	
 	public function getEmailAuthRecipient(): string
@@ -172,6 +177,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 	public function setOtpValidUntil($otpValidUntil): void
 	{
 		$this->otpValidUntil = $otpValidUntil;
+	}
+	
+	public function getUseTwoFa()
+	{
+		return $this->useTwoFa;
+	}
+	
+	public function setUseTwoFa($useTwoFa): void
+	{
+		$this->useTwoFa = $useTwoFa;
 	}
 	
 }
