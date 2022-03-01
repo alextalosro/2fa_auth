@@ -38,8 +38,10 @@
 		
 		public function prepareAuthentication(object $user): void
 		{
+			if (!($user instanceof TwoFactorInterface)) {
+				return;
+			}
 			
-			/** @var TwoFactorInterface $user */
 			$this->codeGenerator->generateAndSend($user);
 		}
 		
@@ -73,4 +75,5 @@
 		{
 			return $user->getEmailAuthCode() === $authenticationCode && $user->getOtpValidUntil() > new \DateTimeImmutable('now');
 		}
+		
 	}

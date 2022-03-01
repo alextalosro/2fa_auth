@@ -25,5 +25,7 @@ services:
 
     acme.custom_two_factor_provider:
         class: App\Security\TwoFactorAuth\CustomTwoFactorProvider
+        autowire: true
+        parent: scheb_two_factor.security.email.provider
         tags:
-            - { name: scheb_two_factor.provider, alias: acme_two_factor_provider }
+            - { name: scheb_two_factor.provider, alias: CustomProvider }
