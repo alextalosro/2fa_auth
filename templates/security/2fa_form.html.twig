@@ -46,10 +46,10 @@
                         <input type="hidden" name="{{ csrfParameterName }}" value="{{ csrf_token(csrfTokenId) }}">
                     {% endif %}
                     <p class="submit"><input type="submit" value="{{ "login"|trans({}, 'SchebTwoFactorBundle') }}" /></p>
-                </form>
 
-                {# The logout link gives the user a way out if they can't complete two-factor authentication #}
-                <p class="cancel"><a href="{{ logoutPath }}">{{ "cancel"|trans({}, 'SchebTwoFactorBundle') }}</a></p>
+                    {# The logout link gives the user a way out if they can't complete two-factor authentication #}
+                    <p class="cancel"><a href="{{ logoutPath }}">{{ "cancel"|trans({}, 'SchebTwoFactorBundle') }}</a></p>
+                </form>
             </div>
         </div>
     </div>

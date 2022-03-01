@@ -7,6 +7,7 @@
 	use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Email\Generator\CodeGeneratorInterface;
 	use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\TwoFactorFormRendererInterface;
 	use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\TwoFactorProviderInterface;
+	use Symfony\Component\HttpFoundation\Session\SessionInterface;
 	
 	class CustomTwoFactorProvider implements TwoFactorProviderInterface
 	{
@@ -57,6 +58,7 @@
 				return true;
 			}
 			
+			dd($_SESSION);
 			return false;
 			
 		}
