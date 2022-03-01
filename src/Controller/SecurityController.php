@@ -33,11 +33,11 @@ class SecurityController extends AbstractController
 		
 		EntityManagerInterface $entityManager)
 	{
-		/*$user = $this->getUser();
-		if(!$user ->isTotpAuthenticationEnabled()){
+		$user = $this->getUser();
+		if(!$user ->isEmailAuthEnabled()){
 			$user->setTotpSecret($totpAuthenticator->generateSecret());
 			
 			$entityManager->flush();
-		}*/
+		}
 	}
 }

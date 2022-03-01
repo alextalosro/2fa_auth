@@ -22,3 +22,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    acme.custom_two_factor_provider:
+        class: App\Security\TwoFactorAuth\CustomTwoFactorProvider
+        tags:
+            - { name: scheb_two_factor.provider, alias: acme_two_factor_provider }

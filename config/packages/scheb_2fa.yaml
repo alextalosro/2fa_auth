@@ -8,4 +8,5 @@ scheb_two_factor:
         enabled: true
         sender_email: no-reply@example.com
         sender_name: Demo 2 FA  # Optional
-        digits: 6                     # Number of digits in authentication code
+        digits: 6    # Number of digits in authentication code
+
