@@ -31,6 +31,7 @@ class SecurityController extends AbstractController
 	#[IsGranted('ROLE_USER')]
 	public function enable2fa(EntityManagerInterface $entityManager)
 	{
+		
 		$user = $this->getUser();
 		if(!$user ->isEmailAuthEnabled()){
 			$user->setUseTwoFa(true);
