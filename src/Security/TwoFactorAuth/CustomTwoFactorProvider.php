@@ -58,7 +58,6 @@
 				return true;
 			}
 			
-			dd($_SESSION);
 			return false;
 			
 		}
